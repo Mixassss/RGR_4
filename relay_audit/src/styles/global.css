@@ -1,0 +1,78 @@
+/* === Общие стили для всего приложения === */
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #0B1F3A; /* тёмно-синий фон */
+  color: #F0F4F8; /* светлый текст */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* === Общие кнопки === */
+button {
+  font-size: 16px;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.2s ease;
+}
+
+/* Основная зелёная кнопка */
+button.primary {
+  background-color: #00CEC8;
+  color: #0B1F3A;
+}
+
+button.primary:hover {
+  background-color: #00B9B3;
+  box-shadow: 0 0 8px rgba(0, 206, 200, 0.5);
+}
+
+/* Второстепенная кнопка — обводка */
+button.secondary {
+  background-color: transparent;
+  color: #00CEC8;
+  border: 2px solid #00CEC8;
+}
+
+button.secondary:hover {
+  background-color: rgba(0, 206, 200, 0.1);
+}
+
+/* Кнопка ошибки */
+button.danger {
+  background-color: #FF4C4C;
+  color: #F0F4F8;
+}
+
+button.danger:hover {
+  background-color: #D32F2F;
+}
+
+/* Неактивная кнопка */
+button:disabled {
+  background-color: #34495E;
+  color: #B0BEC5;
+  cursor: not-allowed;
+}
+
+/* === Вводы, текстовые поля === */
+input[type="text"],
+input[type="password"],
+input[type="file"],
+select,
+textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0 20px 0;
+  border: 1px solid #00CEC8;
+  border-radius: 4px;
+  background-color: #1A2B4C;
+  color: #f0f8f1;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #b0c5b7;
+}
