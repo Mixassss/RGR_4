@@ -10,8 +10,11 @@ const userSchema = new Schema({
   password: {
     type: String,
     required: true
-  }
-}, {
+  },
+  firstName: String,
+  lastName: String,
+  patronymic: String,
+  }, {
   versionKey: false
 });
 
