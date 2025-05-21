@@ -78,6 +78,41 @@ router.put('/', async (req, res) => {
     }
 });
 
+// Обновление данных пользователя
+router.put('/profile/:login', async (req, res) => {
+  try {
+    const { login } = req.params;
+    const updateFields = req.body;
+
+    const updatedUser = await User.findOneAndUpdate(
+      { login },
+      { $set: updateFields },
+      { new: true }
+    );
+
+    if (!updatedUser) {
+      return res.status(404).json({ success: false, message: 'Пользователь не найден' });
+    }
+
+    return res.json({ success: true, user: updatedUser });
+  } catch (error) {
+    console.error('Ошибка при обновлении пользователя:', error);
+    return res.status(500).json({ success: false, message: 'Ошибка сервера' });
+  }
+});
+
+// Получить данные пользователя (без пароля)
+router.get("/profile/:login", async (req, res) => {
+    try {
+        const user = await User.findOne({ login: req.params.login }).select("-password");
+        if (!user) return res.status(404).json({ success: false, message: "Пользователь не найден" });
+        res.json({ success: true, user });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ success: false, message: "Ошибка сервера" });
+    }
+});
+
 
 router.post("/refresh-token", (req, res) => {
     try {
